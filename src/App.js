@@ -268,16 +268,22 @@ function App() {
     }))
   }
 
+  const [toggle, setToggle] = useState(true)
+
+ 
   return (
     <div>
       <Banner />
-      <Formulario 
+     {toggle && ( <Formulario 
         cadastrarTime={cadastrarTime}
         times={times.map(time => time.nome)} 
-        aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])} 
-      />
+        aoCadastrar={colaborador => setColaboradores([...colaboradores, colaborador])}
+      />)}
       <section className="times">
-        <h1>Minha organização</h1>
+        <div className="organizacao">
+          <h1>Minha organização</h1>
+          <img className="icone" src='/imagens/btn-icone.png' alt="Ícone de exibir formulário" onClick={() => setToggle(!toggle) }/>
+        </div>
         {times.map((time, indice) => 
           <Time 
             mudarCor={mudarCorDoTime}
